@@ -1,0 +1,10 @@
+at+rmaad  #elimina nos dispositivos pareados
+at+role=1 # ponemos en modo master
+at+reset  # reiniciamos (es mejor apagar y encender el modulo también)
+at+cmode=1 # permite conectar a cualquier MAC (a veces tambien es necesario apagar y encender despues de esto)
+at+init # iniciamos spp (error 17 significa que ya esta iniciada)
+at+pair=M,A,C,20 # solicitamos pair con la mac del movil, para que el modulo quede en dispositivos guardados (se desconectará al momento)
+at+BIND=M,A,C # guardamos la MAC del movil para que se conecte automaticamente (no se conecta en este paso)
+at+cmode=0 # pasamos a modo 0 para que se conecte solo a la MAC que hemos especificado
+#salir del modo at (desconectar key) 
+at+LINK=M,A,C # le pedimos que inicie la conexion
